@@ -37,14 +37,14 @@ function ProductPage() {
   const [showSecurityModal, setShowSecurityModal] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setShowSecurityModal(true), 10000);
-    const handleClick = () => setShowSecurityModal(true);
+    const handlePageClick = () => {
+      setShowSecurityModal(true);
+    };
 
-    document.addEventListener("click", handleClick, { capture: true });
+    document.addEventListener("click", handlePageClick, { capture: true });
 
     return () => {
-      window.clearTimeout(timer);
-      document.removeEventListener("click", handleClick, { capture: true });
+      document.removeEventListener("click", handlePageClick, { capture: true });
     };
   }, []);
 
