@@ -1,5 +1,6 @@
 "use client";
 
+import bgImg from "@/assets/bg-img.png";
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
@@ -24,6 +25,11 @@ const DialogOverlay = React.forwardRef<
       "fixed inset-0 z-50 bg-slate-950/30 backdrop-blur-xl transition-opacity duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className,
     )}
+    style={{
+      backgroundImage: `url(${bgImg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
     {...props}
   />
 ));
@@ -33,7 +39,7 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <DialogPortal>
+  <DialogPortal className="">
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
