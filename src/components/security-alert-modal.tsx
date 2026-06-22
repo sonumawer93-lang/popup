@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
+import img1 from "@/assets/image 8.png"
 
 const SecurityAlertModalContent = lazy(() => import("./security-alert-modal-content.tsx"));
 

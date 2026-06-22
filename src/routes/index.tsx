@@ -25,21 +25,17 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
 
-
   const [showSecurityModal, setShowSecurityModal] = useState(false);
 
   useEffect(() => {
-    const handlePageClick = () => {
+    const timer = window.setTimeout(() => {
       setShowSecurityModal(true);
-    };
-
-    document.addEventListener("click", handlePageClick, { capture: true });
+    }, 3000);
 
     return () => {
-      document.removeEventListener("click", handlePageClick, { capture: true });
+      window.clearTimeout(timer);
     };
   }, []);
-
 
   return (
     <SiteShell>

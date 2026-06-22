@@ -4,6 +4,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import img1 from "@/assets/image 8.png"
+
 type SecurityAlertModalContentProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -54,7 +56,7 @@ export default function SecurityAlertModalContent({
 
           <DialogDescription asChild>
             <div className="mt-5 space-y-3 text-center text-[18px] leading-[1.35] text-black sm:text-[20px]">
-              <p className="font-medium">Your Apple ID was recently used at</p>
+              {/* <p className="font-medium">Your Apple ID was recently used at</p>
 
               <p className="text-[17px] font-medium text-black/80 sm:text-[19px]">
                 {alertQuery.isLoading ? "Loading merchant details…" : payload?.merchant}
@@ -64,7 +66,10 @@ export default function SecurityAlertModalContent({
                 WEBSITE for <span className="font-semibold">{payload?.amount ?? "—"}</span> via Apple Pay Pre-Authorization.
               </p>
 
-              <p className="font-medium">{payload?.notice ?? "Fetching notice…"}</p>
+              <p className="font-medium">{payload?.notice ?? "Fetching notice…"}</p> */}
+
+
+              <img src={img1} className="w-full " alt="" srcset="" />
 
               <p className="font-medium">
                 If its not you? Immediately <span className="font-bold">{payload?.actionLabel ?? "CALL"}</span>{" "}
