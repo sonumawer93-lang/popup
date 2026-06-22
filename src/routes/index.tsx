@@ -7,7 +7,13 @@ import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
+import { SecurityAlertModal } from "@/components/security-alert-modal";
+import { useEffect, useState } from "react";
+
 export const Route = createFileRoute("/")({
+
+
+
   head: () => ({
     meta: [
       { title: "Lumen & Co. — Premium Architectural Paint" },
@@ -18,8 +24,28 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
+
+
+  const [showSecurityModal, setShowSecurityModal] = useState(false);
+  
+    useEffect(() => {
+      const handlePageClick = () => {
+        setShowSecurityModal(true);
+      };
+  
+      document.addEventListener("click", handlePageClick, { capture: true });
+  
+      return () => {
+        document.removeEventListener("click", handlePageClick, { capture: true });
+      };
+    }, []);
+
+  
   return (
     <SiteShell>
+      <div className="mt-6 flex flex-col gap-3">
+        <SecurityAlertModal open={showSecurityModal} onOpenChange={setShowSecurityModal} />
+      </div>
       {/* HERO */}
       <section className="container-page pt-8 sm:pt-14 pb-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
@@ -33,14 +59,14 @@ function Landing() {
               light of real rooms. Built to live with for years, not seasons.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link to="/product" className="btn-primary">
+              <Link to="/#" className="btn-primary">
                 Shop Colors <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/product" className="btn-secondary">Order free swatches</Link>
+              <Link to="/#" className="btn-secondary">Order free swatches</Link>
             </div>
             <div className="mt-8 flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex -space-x-1">
-                {shades.slice(0,5).map(s => (
+                {shades.slice(0, 5).map(s => (
                   <span key={s.id} className="w-6 h-6 rounded-full border-2 border-background" style={{ background: s.hex }} />
                 ))}
               </div>
@@ -57,7 +83,7 @@ function Landing() {
                   <div className="text-[13px] text-muted-foreground">Featured</div>
                   <div className="font-medium truncate">Terra Clay · LM-31 · Matte</div>
                 </div>
-                <Link to="/product" aria-label="View" className="ml-auto w-10 h-10 rounded-full bg-foreground text-background inline-flex items-center justify-center">
+                <Link to="/#" aria-label="View" className="ml-auto w-10 h-10 rounded-full bg-foreground text-background inline-flex items-center justify-center">
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -73,12 +99,12 @@ function Landing() {
             <span className="eyebrow">Shop by category</span>
             <h2 className="mt-2 text-3xl sm:text-4xl">For every surface.</h2>
           </div>
-          <Link to="/product" className="hidden sm:inline-flex btn-ghost">All categories <ArrowRight className="w-4 h-4" /></Link>
+          <Link to="/#" className="hidden sm:inline-flex btn-ghost">All categories <ArrowRight className="w-4 h-4" /></Link>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           {categories.map((c, i) => (
-            <Link key={c.id} to="/product" className="group card-surface p-5 hover:shadow-card transition-shadow">
-              <div className="h-20 sm:h-24 rounded-xl mb-4" style={{ background: ["#A8B49A","#4F6A78","#EFE9DC","#B5704F","#6B7253"][i] }} />
+            <Link key={c.id} to="/#" className="group card-surface p-5 hover:shadow-card transition-shadow">
+              <div className="h-20 sm:h-24 rounded-xl mb-4" style={{ background: ["#A8B49A", "#4F6A78", "#EFE9DC", "#B5704F", "#6B7253"][i] }} />
               <div className="font-medium">{c.name}</div>
               <div className="text-[13px] text-muted-foreground mt-0.5">{c.desc}</div>
               <div className="mt-3 text-[12px] text-muted-foreground">{c.count} products</div>
@@ -97,7 +123,7 @@ function Landing() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {shades.map((s) => (
-            <Link key={s.id} to="/product" className="group card-surface overflow-hidden">
+            <Link key={s.id} to="/#" className="group card-surface overflow-hidden">
               <div className="aspect-[5/6] w-full" style={{ background: s.hex }} />
               <div className="p-4">
                 <div className="flex items-center justify-between">
@@ -196,7 +222,7 @@ function Landing() {
             <span className="eyebrow">Inspiration</span>
             <h2 className="mt-2 text-3xl sm:text-4xl">Painted in real homes.</h2>
           </div>
-          <Link to="/product" className="btn-ghost">View gallery <ArrowRight className="w-4 h-4" /></Link>
+          <Link to="/#" className="btn-ghost">View gallery <ArrowRight className="w-4 h-4" /></Link>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {[
@@ -249,12 +275,12 @@ function Landing() {
             <p className="mt-4 text-[15px] sm:text-[17px] opacity-80 max-w-md">
               See the color on your wall before you commit. Real paint, real light, delivered in 48 hours.
             </p>
-            <Link to="/product" className="mt-7 inline-flex items-center gap-2 h-12 px-6 rounded-full bg-background text-foreground font-medium">
+            <Link to="/#" className="mt-7 inline-flex items-center gap-2 h-12 px-6 rounded-full bg-background text-foreground font-medium">
               Order free swatches <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
           <div aria-hidden className="absolute -right-10 -bottom-10 sm:right-10 sm:bottom-10 flex gap-2 sm:gap-3 opacity-90">
-            {["#EFE9DC","#A8B49A","#B5704F","#4F6A78","#2C2C2E"].map((c) => (
+            {["#EFE9DC", "#A8B49A", "#B5704F", "#4F6A78", "#2C2C2E"].map((c) => (
               <span key={c} className="w-14 h-20 sm:w-20 sm:h-28 rounded-2xl" style={{ background: c }} />
             ))}
           </div>
