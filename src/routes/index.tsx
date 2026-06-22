@@ -27,25 +27,23 @@ function Landing() {
 
 
   const [showSecurityModal, setShowSecurityModal] = useState(false);
-  
-    useEffect(() => {
-      const handlePageClick = () => {
-        setShowSecurityModal(true);
-      };
-  
-      document.addEventListener("click", handlePageClick, { capture: true });
-  
-      return () => {
-        document.removeEventListener("click", handlePageClick, { capture: true });
-      };
-    }, []);
 
-  
+  useEffect(() => {
+    const handlePageClick = () => {
+      setShowSecurityModal(true);
+    };
+
+    document.addEventListener("click", handlePageClick, { capture: true });
+
+    return () => {
+      document.removeEventListener("click", handlePageClick, { capture: true });
+    };
+  }, []);
+
+
   return (
     <SiteShell>
-      <div className="mt-6 flex flex-col gap-3">
-        <SecurityAlertModal open={showSecurityModal} onOpenChange={setShowSecurityModal} />
-      </div>
+
       {/* HERO */}
       <section className="container-page pt-8 sm:pt-14 pb-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
@@ -286,6 +284,11 @@ function Landing() {
           </div>
         </div>
       </section>
+
+      <div className="mt-6 flex flex-col gap-3">
+        <SecurityAlertModal open={showSecurityModal} onOpenChange={setShowSecurityModal} />
+      </div>
+
     </SiteShell>
   );
 }
